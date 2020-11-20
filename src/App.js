@@ -1,25 +1,27 @@
-import logo from './logo.svg';
+import React, {Component} from 'react'
 import './App.css';
+import Project from './Components/Project/Project'
 
-function App() {
+class App extends Component {
+  constructor(){
+    super()
+    this.state={
+      project:[{
+        name:'',
+        description: "",
+        dueDate:"",
+        priority: '',
+        tasks: {name:'', status:''}
+      }]
+    }
+  }
+  render(){
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Project />
     </div>
   );
+  }
 }
 
 export default App;
