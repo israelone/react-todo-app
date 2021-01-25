@@ -1,27 +1,17 @@
-import React, {Component} from 'react'
-import './App.css';
-import Project from './Components/Project/Project'
+import React, { Component } from "react";
+import "./App.css";
+import Projects from "./components/Project/Projects";
 
 class App extends Component {
-  constructor(){
-    super()
-    this.state={
-      project:[{
-        name:'',
-        description: "",
-        dueDate:"",
-        priority: '',
-        tasks: {name:'', status:''}
-      }]
-    }
+  constructor() {
+    super();
+    
   }
-  render(){
-  return (
-    <div className="App">
-      <Project />
-    </div>
-  );
+  render() {
+    return (<Projects />)
+    };
   }
-}
+
 
 export default App;
+// Projects are beign rendered
