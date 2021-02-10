@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import TaskControls from "../Tasks/TasksControls/TaskControls";
-import "./Task.css";
 
 class task extends Component {
   constructor(props) {

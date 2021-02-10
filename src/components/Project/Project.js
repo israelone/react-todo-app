@@ -2,23 +2,23 @@ import React, { Component } from "react";
 import ProjectControls from "./ProjectControls/ProjectControls";
 import styled from "styled-components";
 import Tasks from "./Tasks/Tasks";
-import TasksContainer from "./Tasks/TasksContainer";
+import TasksContainer from "./Tasks/TasksContainer/TasksContainer";
 
 const ProjectContainer = styled.div`
   display: grid;
-
   grid-template-columns: repeat(3, 1fr);
   grid-template-rows: 1fr;
   background-color: red;
   margin: 0 auto;
 `;
 
-const ProjectName = styled.h3`
+const ProjectName = styled.span`
   grid-column: 1;
   grid-row: 1;
   display: inline;
+  margin: 20px;
   ${ProjectContainer}:hover & {
-    top: 10px;
+    margin-top: 10px;
   }
 `;
 
@@ -28,13 +28,16 @@ const ProjectDescription = styled.h6`
   grid-row: 1;
   display: none;
   ${ProjectContainer}:hover & {
-    display: visible;
+    display: block;
+    margin-left: 20px;
   }
 `;
+
 const ProjectDueDate = styled.h3`
   display: inline;
   grid-column: 2;
   grid-row: 1;
+  justify-self: center;
 `;
 
 class Project extends Component {

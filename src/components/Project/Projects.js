@@ -8,12 +8,37 @@ const ProjectsContainer = styled.div`
   width: 500px;
   height: 500px;
   margin: 0 auto;
+  font-family: "Quicksand", sans-serif;
+`;
+
+const Button = styled.button`
+  z-index: 1;
+  width: 27px;
+  height: 27px;
+  border-radius: 100%;
+  position: absolute;
+  border: none;
+  bottom: -18px;
+  right: 20px;
+  -webkit-box-shadow: 3px 5px 9px 1px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: 3px 5px 9px 1px rgba(0, 0, 0, 0.75);
+  box-shadow: 3px 5px 9px 1px rgba(0, 0, 0, 0.75);
+
+  background-color: white;
+  transition: all 0.3s ease 0s;
+  cursor: pointer;
+  outline: none;
+`;
+
+const Header = styled.h3`
+  text-align: center;
 `;
 
 class Projects extends Component {
   constructor() {
     super();
     this.state = {
+      showAddProjectForm: false,
       showTasks: false,
       projects: [
         {
@@ -46,6 +71,12 @@ class Projects extends Component {
     });
   };
 
+  showAddProjectForm = () => {
+    this.setState({
+      showAddProjectForm: !this.state.showAddProjectForm,
+    });
+  };
+
   addProjectHandler = (project) => {
     console.log(project);
     let currentProjects = [...this.state.projects];
@@ -66,7 +97,7 @@ class Projects extends Component {
     return (
       <React.Fragment>
         <ProjectsContainer>
-          <h3>Projects</h3>
+          <Header>Projects</Header>
           {this.state.projects.map((project) => {
             return (
               <React.Fragment>
@@ -82,7 +113,12 @@ class Projects extends Component {
             );
           })}
         </ProjectsContainer>
-        <AddProjectForm addProject={this.addProjectHandler} />
+        <AddProjectForm
+          toggleForm={this.showAddProjectForm}
+          addProject={this.addProjectHandler}
+          showForm={this.state.showAddProjectForm}
+        />
+        <Button onClick={this.showAddProjectForm}>+</Button>
       </React.Fragment>
     );
   }

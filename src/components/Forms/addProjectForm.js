@@ -2,9 +2,8 @@ import React, { Component } from "react";
 import styled from "styled-components";
 
 const FormContainer = styled.div`
-  display: block;
+  display: ${(props) => (!props.show ? "block" : "none")};
   background-color: #fafafa;
-
   width: 215px;
   top: 40%;
   left: 50%;
@@ -20,7 +19,7 @@ const FormContainer = styled.div`
 
 const Header = styled.h2`
   text-align: center;
-  font-family: var(--headerFont);
+  font-family: "Nunito", sans-serif;
   letter-spacing: 1px;
 `;
 
@@ -64,6 +63,7 @@ const CancelButton = styled.i`
   border-radius: 100%;
   cursor: pointer;
 `;
+
 class addProjectForm extends Component {
   constructor(props) {
     super(props);
@@ -84,7 +84,7 @@ class addProjectForm extends Component {
 
   render() {
     return (
-      <FormContainer>
+      <FormContainer show={this.props.showForm}>
         <Form>
           <Header>Add Project</Header>
           <Label>
@@ -126,7 +126,7 @@ class addProjectForm extends Component {
             Add
           </Button>
           <CancelButton
-            onClick={"Close from handler"}
+            onClick={this.props.toggleForm}
             className="far fa-times-circle"
           ></CancelButton>
         </Form>
