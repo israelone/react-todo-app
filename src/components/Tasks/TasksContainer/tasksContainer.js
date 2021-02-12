@@ -5,7 +5,7 @@ import Task from "../Task/task";
 const Container = styled.div`
   display: ${(props) => (props.showTasks ? "grid" : "none")};
 
-  background-color: #c7bbbb21;
+  background-color: #f1f1f1;
   padding: 20px;
 `;
 

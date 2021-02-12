@@ -4,10 +4,17 @@ import styled from "styled-components";
 import AddProjectForm from "../Forms/addProjectForm";
 
 const ProjectsContainer = styled.div`
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: auto;
   width: 500px;
-  height: 500px;
   margin: 0 auto;
   font-family: "Quicksand", sans-serif;
+  margin-top: 10%;
+  background-color: #2274a5;
+  height: fit-content;
+  position: relative;
+  border-radius: 8px;
 `;
 
 const Button = styled.button`

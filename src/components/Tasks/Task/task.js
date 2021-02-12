@@ -13,11 +13,12 @@ const Item = styled.li`
 const ConstrolsList = styled.ul`
   padding: 0;
   align-items: center;
-
   display: flex;
 `;
 
-const TaskName = styled.span``;
+const TaskName = styled.span`
+  text-decoration: ${(props) => (props.completed ? "line-through" : "none ")};
+`;
 
 const Control = styled.li`
   cursor: pointer;
@@ -31,11 +32,17 @@ class Task extends Component {
       completed: props.status,
     };
   }
+  taskStatusToggle = () => {
+    this.setState({
+      completed: !this.state.completed,
+    });
+  };
+
   render() {
     return (
       <Item>
-        <Input type="checkbox" checked={this.props.status ? false : true} />
-        <TaskName>{this.props.name}</TaskName>
+        <Input onChange={() => this.taskStatusToggle()} type="checkbox" />
+        <TaskName completed={this.state.completed}>{this.props.name}</TaskName>
         <ConstrolsList>
           <Control className="far fa-edit"></Control>
           <Control className="far fa-trash-alt"></Control>

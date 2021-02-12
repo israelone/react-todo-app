@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import ProjectControls from "./ProjectControls/ProjectControls";
 import styled from "styled-components";
 import TasksContainer from "../Tasks/TasksContainer/tasksContainer";
-import TasksList from "../Tasks/TasksList/tasksList";
 
 const ProjectContainer = styled.div`
   &:hover {
@@ -16,13 +15,14 @@ const ProjectContainer = styled.div`
   display: grid;
   background-color: ${(props) =>
     props.priority === "High"
-      ? "red"
+      ? "#f75c03"
       : props.priority === "Medium"
-      ? "orange"
-      : "blue"};
+      ? "#ffd50c"
+      : "#01c8ef"};
   grid-template-columns: repeat(3, 1fr);
   grid-template-rows: 1fr;
   margin: 0 auto;
+  width: 100%;
 `;
 
 const ProjectName = styled.span`
@@ -90,7 +90,10 @@ class Project extends Component {
           <ProjectName>{this.props.name}</ProjectName>
           <ProjectDescription>{this.props.description}</ProjectDescription>
           <ProjectDueDate>{this.props.dueDate}</ProjectDueDate>
-          <ProjectControls showTasks={() => this.showTasksHandler()} />
+          <ProjectControls
+            showTasks={this.state.showTasks}
+            showTasksToggle={() => this.showTasksHandler()}
+          />
         </ProjectContainer>
         <TasksContainer
           tasks={this.props.tasks}
