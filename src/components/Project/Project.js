@@ -1,14 +1,27 @@
 import React, { Component } from "react";
 import ProjectControls from "./ProjectControls/ProjectControls";
 import styled from "styled-components";
-import Tasks from "./Tasks/Tasks";
-import TasksContainer from "./Tasks/TasksContainer/TasksContainer";
+import TasksContainer from "../Tasks/TasksContainer/tasksContainer";
+import TasksList from "../Tasks/TasksList/tasksList";
 
 const ProjectContainer = styled.div`
+  &:hover {
+    position: relative;
+    border-radius: 3px;
+    -webkit-box-shadow: 0px 0px 7px 3px rgb(0 0 0 / 75%);
+    -moz-box-shadow: 0px 0px 7px 3px rgba(0, 0, 0, 0.75);
+    box-shadow: 0px 0px 3px 1px rgb(0 0 0 / 75%);
+  }
+
   display: grid;
+  background-color: ${(props) =>
+    props.priority === "High"
+      ? "red"
+      : props.priority === "Medium"
+      ? "orange"
+      : "blue"};
   grid-template-columns: repeat(3, 1fr);
   grid-template-rows: 1fr;
-  background-color: red;
   margin: 0 auto;
 `;
 
@@ -40,6 +53,18 @@ const ProjectDueDate = styled.h3`
   justify-self: center;
 `;
 
+const Label = styled.label`
+  margin: auto;
+`;
+
+const Option = styled.option``;
+
+const Select = styled.select`
+  margin: 0 10px;
+`;
+
+const Task = styled.li``;
+
 class Project extends Component {
   constructor(props) {
     super(props);
@@ -61,23 +86,16 @@ class Project extends Component {
   render() {
     return (
       <React.Fragment>
-        <ProjectContainer>
+        <ProjectContainer priority={this.state.priority}>
           <ProjectName>{this.props.name}</ProjectName>
           <ProjectDescription>{this.props.description}</ProjectDescription>
           <ProjectDueDate>{this.props.dueDate}</ProjectDueDate>
           <ProjectControls showTasks={() => this.showTasksHandler()} />
         </ProjectContainer>
-        <TasksContainer showTasks={this.state.showTasks}>
-          <label>Priority</label>
-          <select>
-            <option value="High">High</option>
-            <option value="Medium">Medium</option>
-            <option value="Low">Low</option>
-          </select>
-          {this.props.tasks.map((task) => {
-            return <Tasks name={task.name} status={task.status} />;
-          })}
-        </TasksContainer>
+        <TasksContainer
+          tasks={this.props.tasks}
+          showTasks={this.state.showTasks}
+        ></TasksContainer>
       </React.Fragment>
     );
   }

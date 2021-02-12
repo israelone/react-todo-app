@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import styled from "styled-components";
 
 const FormContainer = styled.div`
-  display: ${(props) => (!props.show ? "block" : "none")};
+  display: ${(props) => (props.show ? "block" : "none")};
   background-color: #fafafa;
   width: 215px;
   top: 40%;

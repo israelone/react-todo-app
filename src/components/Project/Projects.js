@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import Project from "../Project/Project";
-import Tasks from "../Project/Tasks/Tasks";
 import styled from "styled-components";
 import AddProjectForm from "../Forms/addProjectForm";
 
@@ -31,7 +30,12 @@ const Button = styled.button`
 `;
 
 const Header = styled.h3`
+  letter-spacing: 4px;
+  color: black;
   text-align: center;
+  margin: auto;
+  font-family: var(--headerFont);
+  margin: 10px;
 `;
 
 class Projects extends Component {
@@ -55,7 +59,7 @@ class Projects extends Component {
           name: "Angular",
           description: "Learn Angular",
           dueDate: "2020-15-14",
-          priority: "High",
+          priority: "Low",
           tasks: [
             { name: "Setup", completed: false },
             { name: "Implementation", completed: false },
